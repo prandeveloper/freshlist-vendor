@@ -5,6 +5,7 @@ import VendorRegister from '../screens/VendorRegister';
 import VendorRegisterPhoto from '../screens/VendorRegisterPhoto';
 import RegisterComplete from '../screens/RegisterComplete';
 import ProductList from '../screens/productPages/ProductList';
+import ProductGroup from '../screens/productPages/ProductGroup';
 
 const Stack = createNativeStackNavigator();
 // eslint-disable-next-line prettier/prettier
@@ -35,6 +36,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="ProductList"
         component={ProductList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductGroup"
+        component={ProductGroup}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

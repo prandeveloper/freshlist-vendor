@@ -14,8 +14,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from '../LoginStyle';
 import CustomHeader from '../../custom/CustomHeader';
 import product from '../../assets/imageProduct.png';
+import {Searchbar} from 'react-native-paper';
 
-const RegisterComplete = ({navigation}) => {
+const ProductGroup = ({navigation}) => {
   const [data, setData] = useState([
     {
       id: 1,
@@ -54,6 +55,8 @@ const RegisterComplete = ({navigation}) => {
       image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
     },
   ]);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const onChangeSearch = query => setSearchQuery(query);
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       <StatusBar backgroundColor={'#5F0099'} />
@@ -68,35 +71,33 @@ const RegisterComplete = ({navigation}) => {
           style={styles.mainGradient}>
           <View style={myStyle.container}>
             <View style={myStyle.vendorView}>
-              <Text style={styles.vendorText}>Product Details</Text>
+              <Text style={styles.vendorText}>GROUP</Text>
             </View>
           </View>
+
+          {/* SearchBar */}
+
+          <View style={myStyle.searchView}>
+            <Searchbar
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+          </View>
+
+          {/* Total Quantity No */}
+
           <View>
             {data.map(item => (
               <TouchableOpacity key={item.id}>
                 <View style={myStyle.row}>
                   <View style={myStyle.mainViewOne}>
-                    <Image source={product} style={myStyle.image} />
+                    <Text style={myStyle.unitText}>Saravana 1st Street</Text>
                   </View>
                   <View style={myStyle.mainViewTwo}>
-                    <View style={myStyle.rightLeftView}>
-                      <View style={myStyle.topNameLeft}>
-                        <Text style={myStyle.leftText}>{item.name}</Text>
-                      </View>
-                      <View style={myStyle.topNameRight}>
-                        <Text style={myStyle.rightText}>Edit</Text>
-                      </View>
-                    </View>
-                    <View style={myStyle.rightLeftView}>
-                      <View style={myStyle.topNameLeft}>
-                        <Text style={myStyle.qtyText}>500ml</Text>
-                      </View>
-                    </View>
-                    <View style={myStyle.rightLeftView}>
-                      <View style={myStyle.topNameRight}>
-                        <Text style={myStyle.unitText}>Units 100</Text>
-                      </View>
-                    </View>
+                    <Text style={[myStyle.unitText, {color: '#ED0000'}]}>
+                      25
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -104,9 +105,7 @@ const RegisterComplete = ({navigation}) => {
           </View>
 
           <View style={styles.mainView2}>
-            <TouchableOpacity
-              style={myStyle.registerTouch}
-              onPress={() => navigation.navigate('ProductGroup')}>
+            <TouchableOpacity style={myStyle.registerTouch}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 1}}
@@ -122,7 +121,7 @@ const RegisterComplete = ({navigation}) => {
   );
 };
 
-export default RegisterComplete;
+export default ProductGroup;
 
 const myStyle = StyleSheet.create({
   container: {
@@ -146,49 +145,19 @@ const myStyle = StyleSheet.create({
   //sdsdsdsdsdsdsd
   row: {
     flexDirection: 'row',
-    marginVertical: 8,
+    marginVertical: 5,
     marginHorizontal: 10,
     borderRadius: 10,
     backgroundColor: '#FFF',
+    paddingVertical: 30,
   },
   mainViewOne: {
-    flex: 1,
+    flex: 5,
   },
   mainViewTwo: {
-    flex: 3,
-  },
-  image: {
-    width: '100%',
-    height: 100,
-    margin: 5,
-  },
-  rightLeftView: {
-    flexDirection: 'row',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-  },
-  topNameLeft: {
     flex: 1,
-    justifyContent: 'center',
   },
-  topNameRight: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-  },
-  leftText: {
-    color: '#333333',
-    fontWeight: '600',
-    fontFamily: 'Poppins',
-  },
-  rightText: {
-    color: '#333333',
-    fontWeight: '400',
-  },
-  qtyText: {
-    color: '#333333',
-    fontWeight: '400',
-  },
+
   unitText: {
     color: '#9700CC',
     fontWeight: '700',
