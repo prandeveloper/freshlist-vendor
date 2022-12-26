@@ -15,6 +15,7 @@ import styles from '../LoginStyle';
 import CustomHeader from '../../custom/CustomHeader';
 import product from '../../assets/imageProduct.png';
 import {Searchbar} from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const ProductGroup = ({navigation}) => {
   const [data, setData] = useState([
@@ -37,23 +38,24 @@ const ProductGroup = ({navigation}) => {
       image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
+    
   ]);
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
@@ -63,12 +65,13 @@ const ProductGroup = ({navigation}) => {
 
       <CustomHeader />
 
-      <ScrollView>
+      
         <LinearGradient
           start={{x: 1, y: 0}}
           end={{x: 0, y: 1}}
           colors={['#ffffcc', '#ccffff', '#ffffcc']}
           style={styles.mainGradient}>
+          <ScrollView>
           <View style={myStyle.container}>
             <View style={myStyle.vendorView}>
               <Text style={styles.vendorText}>GROUP</Text>
@@ -78,11 +81,36 @@ const ProductGroup = ({navigation}) => {
           {/* SearchBar */}
 
           <View style={myStyle.searchView}>
-            <Searchbar
+          <View style={myStyle.searchViewOne}> 
+          <Searchbar
               placeholder="Search"
+              placeholderTextColor={'gray'}
               onChangeText={onChangeSearch}
               value={searchQuery}
+              style={{height:40,backgroundColor:'#fff'}}
             />
+            </View>
+          <View style={myStyle.searchViewTwo}>
+          <TouchableOpacity style={myStyle.serachTouch}>
+            <Ionicons name='filter-outline' color={"gray"} size={25}/>
+            </TouchableOpacity>
+          </View>
+           
+          </View>
+
+
+          {/* Total Subscribers */}
+
+          <View style={myStyle.SubscribeView}>
+          <View style={myStyle.subsViewOne}> 
+          <Text style={myStyle.subsText}>Total 75 Subscribers</Text>
+            </View>
+          <View style={myStyle.subsViewTwo}>
+          <TouchableOpacity style={myStyle.serachTouch}>
+            <Ionicons name='filter-outline' color={"gray"} size={25}/>
+            </TouchableOpacity>
+          </View>
+           
           </View>
 
           {/* Total Quantity No */}
@@ -115,8 +143,9 @@ const ProductGroup = ({navigation}) => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
+          </ScrollView>
         </LinearGradient>
-      </ScrollView>
+      
     </SafeAreaView>
   );
 };
@@ -142,6 +171,47 @@ const myStyle = StyleSheet.create({
     paddingHorizontal: 50,
     textAlign: 'center',
   },
+  //SearchBar
+  searchView:{
+    flex:1,
+    flexDirection:'row',
+    marginHorizontal:10,
+    borderRadius:20
+  },
+  searchViewOne:{
+    flex:6,
+    justifyContent:'center',
+    alignItems:'center',
+    
+  },
+  searchViewTwo:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#fff'
+  },
+  serachTouch:{
+    borderColor:'gray',
+    borderWidth:1,
+    borderRadius:30,
+    padding:2
+  },
+  //Subuscribe
+  SubscribeView:{
+    flex:1,
+    flexDirection:'row',
+    marginHorizontal:10,
+    marginVertical:10
+  },
+  subsViewOne:{
+    flex:1,
+    justifyContent:'center'
+  },
+  subsViewTwo:{},
+  subsText:{
+    color:'#8000AD',
+  fontSize:18,
+fontWeight:'700'},
   //sdsdsdsdsdsdsd
   row: {
     flexDirection: 'row',

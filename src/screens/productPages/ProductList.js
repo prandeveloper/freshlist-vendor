@@ -36,23 +36,25 @@ const RegisterComplete = ({navigation}) => {
       image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
-      id: 4,
-      name: 'Srick Tree',
+      id: 3,
+      name: 'Jaden Boor',
       status: 'active',
-      image: 'https://bootdey.com/img/Content/avatar/avatar4.png',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
+    
+   
   ]);
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
@@ -60,12 +62,13 @@ const RegisterComplete = ({navigation}) => {
 
       <CustomHeader />
 
-      <ScrollView>
+      
         <LinearGradient
           start={{x: 1, y: 0}}
           end={{x: 0, y: 1}}
           colors={['#ffffcc', '#ccffff', '#ffffcc']}
           style={styles.mainGradient}>
+          <ScrollView>
           <View style={myStyle.container}>
             <View style={myStyle.vendorView}>
               <Text style={styles.vendorText}>Product Details</Text>
@@ -116,8 +119,9 @@ const RegisterComplete = ({navigation}) => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
+          </ScrollView>
+
         </LinearGradient>
-      </ScrollView>
     </SafeAreaView>
   );
 };
