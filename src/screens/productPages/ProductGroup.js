@@ -16,6 +16,8 @@ import CustomHeader from '../../custom/CustomHeader';
 import product from '../../assets/imageProduct.png';
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const ProductGroup = ({navigation}) => {
   const [data, setData] = useState([
@@ -106,8 +108,21 @@ const ProductGroup = ({navigation}) => {
           <Text style={myStyle.subsText}>Total 75 Subscribers</Text>
             </View>
           <View style={myStyle.subsViewTwo}>
-          <TouchableOpacity style={myStyle.serachTouch}>
-            <Ionicons name='filter-outline' color={"gray"} size={25}/>
+          
+          <TouchableOpacity style={myStyle.subsTouch}>
+          <LinearGradient
+                start={{x: 1, y: 0}}
+                end={{x: 1, y: 1}}
+                colors={['#9F1692', '#F67062']}
+                style={myStyle.registerGradiant}>
+            <Feather name='plus' color={"#FFF"} size={30}/>
+            </LinearGradient>
+            </TouchableOpacity>
+            
+          </View>
+          <View style={myStyle.subsViewTwo}>
+          <TouchableOpacity style={myStyle.subsTouch1}>
+            <FontAwesome name='sliders' color={"#000"} size={30}/>
             </TouchableOpacity>
           </View>
            
@@ -133,14 +148,15 @@ const ProductGroup = ({navigation}) => {
           </View>
 
           <View style={styles.mainView2}>
-            <TouchableOpacity style={myStyle.registerTouch}>
+            <TouchableOpacity style={myStyle.registerTouch} onPress={() => navigation.navigate('CustomerDetail')}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 1}}
                 colors={['#9F1692', '#F67062']}
                 style={styles.registerGradiant}>
-                <Text style={styles.registerText}>SAVE</Text>
+            <Feather name='plus' color={"#FFF"} size={35}/>
               </LinearGradient>
+              <Text style={myStyle.AddText}>Add Group</Text>
             </TouchableOpacity>
           </View>
           </ScrollView>
@@ -176,6 +192,7 @@ const myStyle = StyleSheet.create({
     flex:1,
     flexDirection:'row',
     marginHorizontal:10,
+    marginVertical:10,
     borderRadius:20
   },
   searchViewOne:{
@@ -194,24 +211,45 @@ const myStyle = StyleSheet.create({
     borderColor:'gray',
     borderWidth:1,
     borderRadius:30,
-    padding:2
+    padding:2,
+    alignItems:'center',
+    justifyContent:'center',
   },
   //Subuscribe
   SubscribeView:{
     flex:1,
     flexDirection:'row',
     marginHorizontal:10,
-    marginVertical:10
+    marginVertical:5
   },
   subsViewOne:{
-    flex:1,
+    flex:6,
     justifyContent:'center'
   },
-  subsViewTwo:{},
+  subsViewTwo:{
+     flex:1,
+    justifyContent:'center',
+    marginHorizontal:5
+  },
   subsText:{
     color:'#8000AD',
   fontSize:18,
-fontWeight:'700'},
+fontWeight:'700'
+},
+subsTouch:{
+  borderRadius:0,
+  alignItems:'center',
+    justifyContent:'center',
+    
+},
+subsTouch1:{
+  borderColor:'#000',
+    borderWidth:2,
+    borderRadius:5,
+    padding:2,
+    alignItems:'center',
+    justifyContent:'center',
+},
   //sdsdsdsdsdsdsd
   row: {
     flexDirection: 'row',
@@ -236,5 +274,12 @@ fontWeight:'700'},
   registerTouch: {
     justifyContent: 'center',
     alignItems: 'center',
+    padding:5
   },
+  AddText:{
+    color:'#000',
+    marginVertical:5,
+    fontSize:18,
+    color:'#666666'
+  }
 });
