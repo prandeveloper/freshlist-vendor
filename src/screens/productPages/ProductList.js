@@ -97,7 +97,8 @@ const RegisterComplete = ({navigation}) => {
                     </View>
                     <View style={myStyle.rightLeftView}>
                       <View style={myStyle.topNameRight}>
-                        <Text style={myStyle.unitText}>Units 100</Text>
+                      <Text style={[myStyle.unitText,{color:'#333333'}]}>Units </Text>
+                        <Text style={myStyle.unitText}>100</Text>
                       </View>
                     </View>
                   </View>
@@ -177,7 +178,8 @@ const myStyle = StyleSheet.create({
   },
   topNameRight: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection:'row',
+    justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
   leftText: {

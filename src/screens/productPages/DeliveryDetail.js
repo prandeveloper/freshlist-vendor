@@ -20,7 +20,7 @@ import {
   import FontAwesome from 'react-native-vector-icons/FontAwesome';
   import Entypo from 'react-native-vector-icons/Entypo';
   
-  const CustomerDetail = ({navigation}) => {
+  const DeliveryDetail = ({navigation}) => {
     const [data, setData] = useState([
       {
         id: 1,
@@ -40,24 +40,7 @@ import {
         status: 'active',
         image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
       },
-      {
-        id: 3,
-        name: 'Jaden Boor',
-        status: 'active',
-        image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-      },
-      {
-        id: 3,
-        name: 'Jaden Boor',
-        status: 'active',
-        image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-      },
-      {
-        id: 3,
-        name: 'Jaden Boor',
-        status: 'active',
-        image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-      },
+      
       
     ]);
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -77,7 +60,7 @@ import {
             <ScrollView>
             <View style={myStyle.container}>
               <View style={myStyle.vendorView}>
-                <Text style={styles.vendorText}>Customers</Text>
+                <Text style={styles.vendorText}>DELIVERY DETAILS</Text>
               </View>
             </View>
   
@@ -104,7 +87,7 @@ import {
   
             {/* Total Subscribers */}
   
-            <View style={myStyle.SubscribeView}>
+            {/* <View style={myStyle.SubscribeView}>
             <View style={myStyle.subsViewOne}> 
             <Text style={myStyle.subsText}>Saravana 2nd Street</Text>
               </View>
@@ -127,7 +110,7 @@ import {
               </TouchableOpacity>
             </View>
              
-            </View>
+            </View> */}
   
             {/* Total Quantity No */}
   
@@ -140,13 +123,13 @@ import {
                       <Text style={myStyle.unitText1}>Abishek</Text>
                       <Text style={myStyle.unitText}>Flat No: 1040, 2nd Floor,</Text>
                     </View>
-                    <View style={myStyle.mainViewTwo}>
+                    {/* <View style={myStyle.mainViewTwo}>
                       <Entypo name='dots-three-horizontal' color={'#6B656B'} size={30}/>
                       <Text style={[myStyle.unitText, {color: '#ED0000'}]}></Text>
                       <Text style={myStyle.unitText1}>
                         ACTIVE
                       </Text>
-                    </View>
+                    </View> */}
                   </View>
                   
                  
@@ -154,7 +137,7 @@ import {
               ))}
             </View>
   
-            <View style={styles.mainView2}>
+            {/* <View style={styles.mainView2}>
               <TouchableOpacity style={myStyle.registerTouch} onPress={() => navigation.navigate('AddSubscriber')}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
@@ -165,7 +148,7 @@ import {
                 </LinearGradient>
                 <Text style={myStyle.AddText}>Add Subscriber</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
             </ScrollView>
           </LinearGradient>
         
@@ -173,7 +156,7 @@ import {
     );
   };
   
-  export default CustomerDetail;
+  export default DeliveryDetail;
   
   const myStyle = StyleSheet.create({
     container: {
