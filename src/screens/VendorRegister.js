@@ -7,14 +7,80 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './LoginStyle';
 import CustomHeader from '../custom/CustomHeader';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const VendorRegister = ({navigation}) => {
-  const [text, setText] = useState('');
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [door, setDoor] = useState('');
+  const [street, setStret] = useState('');
+  const [location, setLocation] = useState('');
+  const [city, setCity] = useState('');
+  const [pinCode, setPinCode] = useState('');
+  const [serviceLocation, setServiceLocation] = useState('');
+  const [serviceCity, setServiceCity] = useState('');
+  const [servicePincode, setServicePincode] = useState('');
+  const [storeddata, setStoreddata] = useState('');
+
+  const getData = async () => {
+    try {
+      const vendor = await AsyncStorage.getItem('vendorId');
+      if (vendor !== null) {
+        console.log('success');
+        console.log(vendor);
+        setStoreddata(vendor);
+      }
+    } catch (e) {
+      console.log('no Value in login');
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, [storeddata]);
+
+  const submit = () => {
+    {
+      name !== '' &&
+      mobile !== '' &&
+      door !== '' &&
+      street !== '' &&
+      location !== '' &&
+      city !== '' &&
+      pinCode !== '' &&
+      serviceLocation !== '' &&
+      serviceCity !== '' &&
+      servicePincode !== ''
+        ? axios
+            .post(`http://3.6.37.16:8000/app/vender_register/${storeddata}`, {
+              name: name,
+              mobile: mobile,
+              door_number: door,
+              street: street,
+              location: location,
+              city: city,
+              pincode: pinCode,
+              service_location: serviceLocation,
+              service_city: serviceCity,
+              service_pincode: servicePincode,
+            })
+            .then(response => {
+              console.log(response.data);
+              navigation.navigate('VendorRegisterPhoto');
+            })
+            .catch(error => {
+              console.log(error);
+            })
+        : ToastAndroid.show('Complete All Fields', ToastAndroid.SHORT);
+    }
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
@@ -38,64 +104,67 @@ const VendorRegister = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="NAME"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={name}
+                  onChangeText={setName}
+                />
+              </View>
+              <View style={styles.mainView}>
+                <TextInput
+                  maxLength={10}
+                  style={styles.input}
+                  placeholder="Mobile Number"
+                  placeholderTextColor={'gray'}
+                  value={mobile}
+                  onChangeText={setMobile}
+                  keyboardType="number-pad"
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="Door Number"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={door}
+                  onChangeText={setDoor}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="Street"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={street}
+                  onChangeText={setStret}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="Location"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={location}
+                  onChangeText={setLocation}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="City"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={city}
+                  onChangeText={setCity}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="PINCODE"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
-                />
-              </View>
-              <View style={styles.mainView}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Name"
-                  placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={pinCode}
+                  onChangeText={setPinCode}
+                  keyboardType="number-pad"
                 />
               </View>
             </View>
@@ -108,37 +177,36 @@ const VendorRegister = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="Location"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={serviceLocation}
+                  onChangeText={setServiceLocation}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="City"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={serviceCity}
+                  onChangeText={setServiceCity}
                 />
               </View>
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="PINCODE"
                   placeholderTextColor={'gray'}
-                  value={text}
-                  onChangeText={setText}
+                  value={servicePincode}
+                  onChangeText={setServicePincode}
+                  keyboardType="number-pad"
                 />
               </View>
             </View>
           </View>
           <View style={myStyle.container}>
             <View style={styles.mainView2}>
-              <TouchableOpacity
-                style={styles.registerTouch}
-                onPress={() => navigation.navigate('VendorRegisterPhoto')}>
+              <TouchableOpacity style={styles.registerTouch} onPress={submit}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
                   end={{x: 0, y: 1}}

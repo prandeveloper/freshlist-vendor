@@ -8,15 +8,47 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './LoginStyle';
 import CustomHeader from '../custom/CustomHeader';
 import camera from '../assets/image59.png';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const VendorRegisterPhoto = ({navigation}) => {
   const [text, setText] = useState('');
+  const [singleFile, setSingleFile] = useState('');
+
+  const chooseFrontFile = type => {
+    let options = {
+      mediaType: 'photo',
+      maxWidth: 100,
+      maxHeight: 100,
+      selectionLimit: 1,
+      includeBase64: true,
+    };
+    launchImageLibrary(options, response => {
+      console.log('response : ' + JSON.stringify(response));
+      setSingleFile(response);
+      console.log(response.assets[0].base64);
+      if (response.didCancel === 'true') {
+        Alert.alert('User cancelled camera picker');
+        return;
+      } else if (response.errorCode == 'camera_unavailable') {
+        Alert.alert('Camera not available on device');
+        return;
+      } else if (response.errorCode == 'permission') {
+        Alert.alert('Permission not satisfied');
+        return;
+      } else if (response.errorCode == 'others') {
+        Alert.alert(response.errorMessage);
+        return;
+      }
+    });
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView>
@@ -39,7 +71,9 @@ const VendorRegisterPhoto = ({navigation}) => {
             <View style={myStyle.container}>
               <View style={styles.mainView}>
                 <View style={myStyle.cameraView1}>
-                  <Image source={camera} style={myStyle.camera1} />
+                  <TouchableOpacity onPress={chooseFrontFile}>
+                    <Image source={camera} style={myStyle.camera1} />
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -52,7 +86,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="ADHAR CARD NUMBER"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -61,7 +95,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="ENTER NUMBER"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -71,14 +105,18 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <View style={{flexDirection: 'row'}}>
                   <View style={myStyle.cameraView2}>
-                    <Image source={camera} style={myStyle.camera2} />
+                    <TouchableOpacity onPress={chooseFrontFile}>
+                      <Image source={camera} style={myStyle.camera2} />
+                    </TouchableOpacity>
                     <View style={myStyle.frontView}>
                       <Text style={myStyle.frontText}>FRONT</Text>
                     </View>
                   </View>
 
                   <View style={myStyle.cameraView2}>
-                    <Image source={camera} style={myStyle.camera2} />
+                    <TouchableOpacity onPress={chooseFrontFile}>
+                      <Image source={camera} style={myStyle.camera2} />
+                    </TouchableOpacity>
                     <View style={myStyle.frontView}>
                       <Text style={myStyle.frontText}>BACK</Text>
                     </View>
@@ -96,7 +134,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="ENTER NUMBER"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -105,14 +143,18 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <View style={{flexDirection: 'row'}}>
                   <View style={myStyle.cameraView2}>
-                    <Image source={camera} style={myStyle.camera2} />
+                    <TouchableOpacity onPress={chooseFrontFile}>
+                      <Image source={camera} style={myStyle.camera2} />
+                    </TouchableOpacity>
                     <View style={myStyle.frontView}>
                       <Text style={myStyle.frontText}>FRONT</Text>
                     </View>
                   </View>
 
                   <View style={myStyle.cameraView2}>
-                    <Image source={camera} style={myStyle.camera2} />
+                    <TouchableOpacity onPress={chooseFrontFile}>
+                      <Image source={camera} style={myStyle.camera2} />
+                    </TouchableOpacity>
                     <View style={myStyle.frontView}>
                       <Text style={myStyle.frontText}>BACK</Text>
                     </View>
@@ -130,7 +172,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="ACCOUNT NUMBER"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -139,7 +181,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="NAME"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -148,7 +190,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="BRANCH"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -157,7 +199,7 @@ const VendorRegisterPhoto = ({navigation}) => {
               <View style={styles.mainView}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Name"
+                  placeholder="IFSC CODE"
                   placeholderTextColor={'gray'}
                   value={text}
                   onChangeText={setText}
@@ -165,7 +207,9 @@ const VendorRegisterPhoto = ({navigation}) => {
               </View>
               <View style={styles.mainView}>
                 <View style={myStyle.cameraView1}>
-                  <Image source={camera} style={myStyle.camera1} />
+                  <TouchableOpacity onPress={chooseFrontFile}>
+                    <Image source={camera} style={myStyle.camera1} />
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
