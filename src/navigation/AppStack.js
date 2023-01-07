@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginScreen from '../screens/LoginScreen';
+import SignUp from '../screens/SignUp';
 import VendorRegister from '../screens/VendorRegister';
 import VendorRegisterPhoto from '../screens/VendorRegisterPhoto';
 import RegisterComplete from '../screens/RegisterComplete';
@@ -9,16 +9,21 @@ import ProductGroup from '../screens/productPages/ProductGroup';
 import CustomerDetail from '../screens/productPages/CustomerDetail';
 import AddSubscriber from '../screens/productPages/AddSubscriber';
 import DeliveryDetail from '../screens/productPages/DeliveryDetail';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
-// eslint-disable-next-line prettier/prettier
 
 const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="SplashScreen"
+        component={SplashScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="SignUp"
-        component={LoginScreen}
+        component={SignUp}
         options={{headerShown: false}}
       />
       <Stack.Screen
