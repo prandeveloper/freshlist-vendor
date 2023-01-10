@@ -10,6 +10,7 @@ import CustomerDetail from '../screens/productPages/CustomerDetail';
 import AddSubscriber from '../screens/productPages/AddSubscriber';
 import DeliveryDetail from '../screens/productPages/DeliveryDetail';
 import SplashScreen from '../screens/SplashScreen';
+import LogIn from '../screens/LogIn';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="SignUp"
         component={SignUp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LogIn}
         options={{headerShown: false}}
       />
       <Stack.Screen

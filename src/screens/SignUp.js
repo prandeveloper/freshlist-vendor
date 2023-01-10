@@ -151,7 +151,9 @@ const SignUp = ({navigation}) => {
                 <Text style={[styles.vendorText, {fontSize: 15}]}>
                   Already Have An Account ?
                 </Text>
-                <TouchableOpacity style={styles.registerTouch}>
+                <TouchableOpacity
+                  style={styles.registerTouch}
+                  onPress={() => navigation.navigate('Login')}>
                   <Text style={[styles.vendorText, {color: '#A9198F'}]}>
                     {' '}
                     Login
@@ -175,7 +177,7 @@ const SignUp = ({navigation}) => {
             <View style={styles.mainView3}>
               <OTPInputView
                 style={{width: 240, height: 200}}
-                pinCount={6}
+                pinCount={4}
                 code={code}
                 onCodeChanged={setCode}
                 autoFocusOnLoad

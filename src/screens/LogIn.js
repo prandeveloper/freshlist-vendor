@@ -21,7 +21,7 @@ const LogIn = ({navigation}) => {
   const [text, setText] = useState('');
   const [mobile, setMobile] = useState('');
   const [code, setCode] = useState('');
-  // const [otp, setOtp] = useState(false);
+  const [otp, setOtp] = useState(false);
   //const [storeddata, setStoreddata] = useState('');
 
   // <========= Set And Get Value==========>
@@ -114,17 +114,9 @@ const LogIn = ({navigation}) => {
               <Image source={user} style={styles.userImage} />
             </View>
             <View style={styles.mainView}>
-              <Text style={styles.vendorText}>Vendor Registration</Text>
+              <Text style={styles.vendorText}>Vendor Login</Text>
             </View>
-            <View style={styles.mainView}>
-              <TextInput
-                style={styles.input}
-                placeholder="Name"
-                placeholderTextColor={'gray'}
-                value={text}
-                onChangeText={setText}
-              />
-            </View>
+
             <View style={styles.mainView}>
               <TextInput
                 style={styles.input}
@@ -136,25 +128,27 @@ const LogIn = ({navigation}) => {
             </View>
 
             <View style={styles.mainView2}>
-              <TouchableOpacity style={styles.registerTouch} onPress={sendOtp}>
+              <TouchableOpacity style={styles.registerTouch}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
                   end={{x: 0, y: 1}}
                   colors={['#9F1692', '#F67062']}
                   style={styles.registerGradiant}>
-                  <Text style={styles.registerText}>REGISTER</Text>
+                  <Text style={styles.registerText}>LOGIN</Text>
                 </LinearGradient>
               </TouchableOpacity>
             </View>
             <View style={styles.mainView2}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={[styles.vendorText, {fontSize: 15}]}>
-                  Already Have An Account ?
+                  New User ?
                 </Text>
-                <TouchableOpacity style={styles.registerTouch}>
+                <TouchableOpacity
+                  style={styles.registerTouch}
+                  onPress={() => navigation.navigate('SignUp')}>
                   <Text style={[styles.vendorText, {color: '#A9198F'}]}>
                     {' '}
-                    Login
+                    Register Now
                   </Text>
                 </TouchableOpacity>
               </View>
