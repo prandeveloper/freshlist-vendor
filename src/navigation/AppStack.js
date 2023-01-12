@@ -11,6 +11,8 @@ import AddSubscriber from '../screens/productPages/AddSubscriber';
 import DeliveryDetail from '../screens/productPages/DeliveryDetail';
 import SplashScreen from '../screens/SplashScreen';
 import LogIn from '../screens/LogIn';
+import StockList from '../screens/productPages/StockList';
+import SelectProduct from '../screens/productPages/SelectProduct';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +55,11 @@ const HomeStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="StockList"
+        component={StockList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="ProductGroup"
         component={ProductGroup}
         options={{headerShown: false}}
@@ -65,6 +72,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="AddSubscriber"
         component={AddSubscriber}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SelectProduct"
+        component={SelectProduct}
         options={{headerShown: false}}
       />
       <Stack.Screen

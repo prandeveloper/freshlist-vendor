@@ -15,7 +15,7 @@ import styles from '../LoginStyle';
 import CustomHeader from '../../custom/CustomHeader';
 import product from '../../assets/imageProduct.png';
 
-const ProductList = ({navigation}) => {
+const StockList = ({navigation}) => {
   const [data, setData] = useState([
     {
       id: 1,
@@ -28,6 +28,18 @@ const ProductList = ({navigation}) => {
       name: 'Clark Man',
       status: 'active',
       image: 'https://bootdey.com/img/Content/avatar/avatar6.png',
+    },
+    {
+      id: 3,
+      name: 'Jaden Boor',
+      status: 'active',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
+    },
+    {
+      id: 3,
+      name: 'Jaden Boor',
+      status: 'active',
+      image: 'https://bootdey.com/img/Content/avatar/avatar5.png',
     },
     {
       id: 3,
@@ -56,7 +68,7 @@ const ProductList = ({navigation}) => {
         <ScrollView>
           <View style={myStyle.container}>
             <View style={myStyle.vendorView}>
-              <Text style={styles.vendorText}>Product List</Text>
+              <Text style={styles.vendorText}>Stock List</Text>
             </View>
           </View>
           <View>
@@ -71,9 +83,9 @@ const ProductList = ({navigation}) => {
                       <View style={myStyle.topNameLeft}>
                         <Text style={myStyle.leftText}>{item.name}</Text>
                       </View>
-                      <View style={myStyle.topNameRight}>
+                      {/* <View style={myStyle.topNameRight}>
                         <Text style={myStyle.rightText}>Edit</Text>
-                      </View>
+                      </View> */}
                     </View>
                     <View style={myStyle.rightLeftView}>
                       <View style={myStyle.topNameLeft}>
@@ -83,9 +95,9 @@ const ProductList = ({navigation}) => {
                     <View style={myStyle.rightLeftView}>
                       <View style={myStyle.topNameRight}>
                         <Text style={[myStyle.unitText, {color: '#333333'}]}>
-                          Rs.{' '}
+                          Units{' '}
                         </Text>
-                        <Text style={myStyle.unitText}>50</Text>
+                        <Text style={myStyle.unitText}>100</Text>
                       </View>
                     </View>
                   </View>
@@ -97,7 +109,7 @@ const ProductList = ({navigation}) => {
           <View style={styles.mainView2}>
             <TouchableOpacity
               style={myStyle.registerTouch}
-              onPress={() => navigation.navigate('StockList')}>
+              onPress={() => navigation.navigate('ProductGroup')}>
               <LinearGradient
                 start={{x: 1, y: 0}}
                 end={{x: 0, y: 1}}
@@ -113,7 +125,7 @@ const ProductList = ({navigation}) => {
   );
 };
 
-export default ProductList;
+export default StockList;
 
 const myStyle = StyleSheet.create({
   container: {

@@ -19,6 +19,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const VendorRegister = ({navigation}) => {
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
+  const [email, setEmail] = useState('');
   const [door, setDoor] = useState('');
   const [street, setStret] = useState('');
   const [location, setLocation] = useState('');
@@ -49,6 +50,7 @@ const VendorRegister = ({navigation}) => {
     {
       name !== '' &&
       mobile !== '' &&
+      email !== '' &&
       door !== '' &&
       street !== '' &&
       location !== '' &&
@@ -61,6 +63,7 @@ const VendorRegister = ({navigation}) => {
             .post(`http://3.6.37.16:8000/app/vender_register/${storeddata}`, {
               name: name,
               mobile: mobile,
+              email: email,
               door_number: door,
               street: street,
               location: location,
@@ -118,6 +121,16 @@ const VendorRegister = ({navigation}) => {
                   placeholderTextColor={'gray'}
                   value={mobile}
                   onChangeText={setMobile}
+                  keyboardType="number-pad"
+                />
+              </View>
+              <View style={styles.mainView}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Email"
+                  placeholderTextColor={'gray'}
+                  value={email}
+                  onChangeText={setEmail}
                   keyboardType="number-pad"
                 />
               </View>
@@ -206,7 +219,9 @@ const VendorRegister = ({navigation}) => {
           </View>
           <View style={myStyle.container}>
             <View style={styles.mainView2}>
-              <TouchableOpacity style={styles.registerTouch} onPress={submit}>
+              <TouchableOpacity
+                style={styles.registerTouch}
+                onPress={() => navigation.navigate('VendorRegisterPhoto')}>
                 <LinearGradient
                   start={{x: 1, y: 0}}
                   end={{x: 0, y: 1}}
